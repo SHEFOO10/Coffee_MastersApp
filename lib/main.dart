@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown)
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -52,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           const SizedBox(height: 20),
           Text('Welcome ${name != "" ? name : "Guest"} to Coffee Masters'),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
