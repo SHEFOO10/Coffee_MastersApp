@@ -1,29 +1,31 @@
+import 'package:coffee_masters/datamanager.dart';
 import 'package:flutter/material.dart';
 
 class OffersPage extends StatelessWidget {
-  const OffersPage({super.key});
+  const OffersPage({super.key, required this.dataManager});
 
+  final DataManager dataManager;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView(
         children: const [
-          Offer(name: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
-          Offer(name: "50% Off", description: "Get 50% off on all coffee orders!"),
-          Offer(name: "Free Delivery", description: "Get free delivery on all orders!"),
-          Offer(name: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
-          Offer(name: "50% Off", description: "Get 50% off on all coffee orders!"),
-          Offer(name: "Free Delivery", description: "Get free delivery on all orders!"),
-          Offer(name: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
-          Offer(name: "50% Off", description: "Get 50% off on all coffee orders!"),
-          Offer(name: "Free Delivery", description: "Get free delivery on all orders!"),
-          Offer(name: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
-          Offer(name: "50% Off", description: "Get 50% off on all coffee orders!"),
-          Offer(name: "Free Delivery", description: "Get free delivery on all orders!"),
-          Offer(name: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
-          Offer(name: "50% Off", description: "Get 50% off on all coffee orders!"),
-          Offer(name: "Free Delivery", description: "Get free delivery on all orders!"),
+          Offer(title: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
+          Offer(title: "50% Off", description: "Get 50% off on all coffee orders!"),
+          Offer(title: "Free Delivery", description: "Get free delivery on all orders!"),
+          Offer(title: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
+          Offer(title: "50% Off", description: "Get 50% off on all coffee orders!"),
+          Offer(title: "Free Delivery", description: "Get free delivery on all orders!"),
+          Offer(title: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
+          Offer(title: "50% Off", description: "Get 50% off on all coffee orders!"),
+          Offer(title: "Free Delivery", description: "Get free delivery on all orders!"),
+          Offer(title: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
+          Offer(title: "50% Off", description: "Get 50% off on all coffee orders!"),
+          Offer(title: "Free Delivery", description: "Get free delivery on all orders!"),
+          Offer(title: "Buy 1 Get 1 Free", description: "Buy one coffee and get another one for free!"),
+          Offer(title: "50% Off", description: "Get 50% off on all coffee orders!"),
+          Offer(title: "Free Delivery", description: "Get free delivery on all orders!"),
         ],
       ),
     );
@@ -31,32 +33,61 @@ class OffersPage extends StatelessWidget {
 }
 
 class Offer extends StatelessWidget {
-  //properties
-  final String name;
+  final String title;
   final String description;
 
-  const Offer({super.key, required this.name, required this.description});
-
+  const Offer({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.deepPurple,
-      shadowColor: Colors.black,
-      surfaceTintColor: Colors.black,
-      elevation: 15,
-      child: SizedBox(
-        width: 400,
-        height: 100,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
-            const SizedBox(height: 20),
-            Text(description, style: const TextStyle(fontSize: 16, color: Colors.white),),
-          ],
+    return SizedBox(
+      width: 320,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 2,
+          color: Colors.amber.shade50,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/background.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                        child: Container(
+                          color: Colors.amber.shade50,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(title,
+                                style: Theme.of(context).textTheme.headlineMedium),
+                          ),
+                        )),
+                    Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Container(
+                            color: Colors.amber.shade50,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(description,
+                                  style: Theme.of(context).textTheme.bodyLarge),
+                            ),
+                          ),
+                        ))
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
-      ),
-    );
+    ));
   }
 }
