@@ -1,3 +1,5 @@
+import 'package:coffee_masters/screens/homepage.dart';
+import 'package:coffee_masters/screens/offerspage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,13 +32,23 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  String name = "Guest";
+
+  int _currentIndex = 0;
+  Widget currentPage = const OffersPage();
 
   @override
   Widget build(BuildContext context) {
+    switch(_currentIndex) {
+      case 0:
+        currentPage = const Homepage();
+      case 1:
+        currentPage = const OffersPage();
+      case 2:
+        currentPage = const Placeholder();
+    }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.brown,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,24 +59,26 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         )
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          Text('Welcome ${name != "" ? name : "Guest"} to Coffee Masters'),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: TextField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your name'
-              ),
-              onChanged: (value) => setState(() {
-                  name = value;
-                }),
-            ),
-          ),
-        ],
-      ),
+      body: currentPage,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) => setState(() {
+          _currentIndex = index;
+        }),
+        items: const[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Favorites'
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          label: 'Settings'
+        ),
+      ]),
     );
   }
 }
