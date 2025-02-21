@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:coffee_masters/datamodel.dart';
+import 'package:coffee_masters/screens/menupage.dart';
 import 'package:http/http.dart' as http;
 
 class DataManager {
@@ -21,15 +22,21 @@ class DataManager {
   }
 
   cartRemove(Product p) {
+    ItemInCart? productItem;
+    bool isTheLast = false;
     for (var item in cart) {
       if (item.product.id == p.id) {
+        productItem = item;
         if (item.quantity == 1) {
-          cart.remove(item);
+          isTheLast = true;
         } else {
+          isTheLast = false;
           item.quantity--;
         }
       }
-      // cart.removeWhere((item) => item.product.id == p.id);
+    }
+    if (isTheLast) {
+      cart.remove(productItem);
     }
   }
 

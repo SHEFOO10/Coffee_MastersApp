@@ -28,7 +28,7 @@ class MenuPage extends StatelessWidget {
                       },);
                   },
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   )
                 ],
               );
